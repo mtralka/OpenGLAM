@@ -1,0 +1,51 @@
+<script setup lang="ts">
+import { useProductStore } from '@/stores/productStore'
+import { MAP_STYLES } from '@/utils/defaultSettings'
+import { watch } from 'vue'
+import ControlPanel from './ControlPanel.vue'
+import DeckGL from './Map/DeckGL.vue'
+import Mapbox from './Map/Mapbox.vue'
+import Popup from './Map/Popup.vue'
+import TileLayer from './Map/TileLayer.vue'
+
+const accessToken =
+  'pk.eyJ1IjoibXRyYWxrYSIsImEiOiJja2VjNm5hdWEwNjQ4MnZ0cHlycXlndnN5In0.mfQAFUPzfGZeMht0EToJBA'
+
+const productStore = useProductStore()
+
+watch(
+  () => productStore.getSelectedProduct,
+  (newVal, oldVal) => {
+    console.log(newVal)
+    productStore.loadProductEntries()
+  },
+  { deep: true }
+)
+
+function handleClick(info, event) {
+  productStore.clickedPoint.value = null
+  productStore.clickedPoint.show = true
+  const { object, x, y, coordinate } = info.info
+  productStore.loadValueAtPoint(coordinate[0], coordinate[1])
+  productStore.clickedPoint.x = x
+  productStore.clickedPoint.y = y
+}
+</script>
+<template>
+  <div class="w-screen h-screen overflow-hidden">
+    <div class="absolute z-50 top-10 left-10">
+      <p
+        class="text-3xl font-bold text-center text-white"
+        style="text-shadow: 2px 3px 0 #1db980"
+      >
+        OpenGLAM
+      </p>
+    </div>
+    <DeckGL @click="handleClick"
+      ><Mapbox :accessToken="accessToken" :mapStyle="MAP_STYLES.DARK"></Mapbox>
+      <TileLayer :data="productStore.getTileLayerURL()"> </TileLayer>
+    </DeckGL>
+    <ControlPanel class="right-0 bottom-10 absolute md:right-10"></ControlPanel>
+    <Popup></Popup>
+  </div>
+</template>
