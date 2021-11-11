@@ -1,1 +1,1 @@
-export default 'https://glam2.app'
+export default 'https://api.glam2.app'

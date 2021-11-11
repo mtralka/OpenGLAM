@@ -9,7 +9,7 @@ const updateLayer = inject('updateLayer')
 
 
 const layer = createLayer()
-console.log(layer)
+
 watch(
   () => attrs,
   (newVal, oldVal) => {

@@ -15,7 +15,7 @@ export function computeTileLayerURL(selectedProduct: selectedProductType) {
         return null
     }
 
-    const URL = BASEURL + `/tiles/${product_id}/${date}/{z}/{x}/{y}.png?`
+    const URL = BASEURL + `/tiles/${product_id}/${date.replaceAll('/', '-')}/{z}/{x}/{y}.png?`
 
     const params = new URLSearchParams(paramsObject)
 

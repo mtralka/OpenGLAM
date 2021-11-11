@@ -6,7 +6,6 @@ import { onMounted } from 'vue'
 const availableDataStore = useAvailableDataStore()
 
 onMounted(async () => {
-  console.log('calling')
   availableDataStore.loadAvailableProducts()
   // dataStore.loadAvailableAdminLayers()
   availableDataStore.loadAvailableCropmasks()

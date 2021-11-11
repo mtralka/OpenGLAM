@@ -35,8 +35,6 @@ function updateLayer(newLayer) {
   if (!deck) {
     return
   }
-  //const layers = deck.props.layers.filter((x) => x.id !== newLayer.id)
-  console.log('RECEIVED LAYER', newLayer)
   deck.setProps({ layers: [newLayer] })
 }
 

@@ -10,13 +10,14 @@
   },
   "dependencies": {
     "@danmarshall/deckgl-typings": "^4.9.8",
-    "@deck.gl/core": "^8.6.2",
-    "@deck.gl/layers": "^8.6.2",
+    "@deck.gl/core": "8.6.1",
+    "@deck.gl/layers": "8.6.1",
     "axios": "^0.24.0",
     "mapbox-gl": "^2.5.1",
     "pinia": "^2.0.2",
     "vue": "^3.2.16",
-    "vue-eslint-parser": "^7.1.1"
+    "vue-eslint-parser": "^7.1.1",
+    "vue3-date-time-picker": "^2.3.4"
   },
   "devDependencies": {
     "@types/mapbox-gl": "^2.4.2",

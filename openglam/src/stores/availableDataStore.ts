@@ -31,7 +31,6 @@ export const useAvailableDataStore = defineStore('availableDataStore', {
       const product = useProductStore()
       const data = await getAvailableProducts()
       this.products = data
-      product.selectedProduct.product_id = data.results.at(1).product_id
     },
     async loadAvailableCropmasks(): void {
       const data = await getAvailableCropmasks()

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useProductStore } from '@/stores/productStore'
 import { MAP_STYLES } from '@/utils/defaultSettings'
-import { watch } from 'vue'
 import ControlPanel from './ControlPanel.vue'
 import DeckGL from './Map/DeckGL.vue'
 import Mapbox from './Map/Mapbox.vue'
@@ -13,14 +12,7 @@ const accessToken =
 
 const productStore = useProductStore()
 
-watch(
-  () => productStore.getSelectedProduct,
-  (newVal, oldVal) => {
-    console.log(newVal)
-    productStore.loadProductEntries()
-  },
-  { deep: true }
-)
+
 
 function handleClick(info, event) {
   productStore.clickedPoint.value = null

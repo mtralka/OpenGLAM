@@ -17,24 +17,26 @@ export const useProductStore = defineStore('productStore', {
     getSelectedProduct(state): selectedProductInterface {
       return state.selectedProduct
     },
-    productEntries(state): Array<any> {
-      return state.productEntries
+    getSelectedDate(state): str {
+      return state.selectedProduct.date
     },
-    productDate(state): Array<any> {
-      return state.productEntries
+    getProductDates(state): Array<any> {
+      if (!state.productEntries.results) return []
+
+      return state.productEntries.results.map(el => el.date).map(el => el.replaceAll('-', '/'))
     },
   },
   actions: {
     async loadProductEntries() {
       const data = await getDatasetEntries(this.selectedProduct)
       this.productEntries = data
+      this.selectedProduct.date = this.getProductDates.at(-1)
     },
     async loadValueAtPoint(x, y) {
       const data = await getValueAtPoint(this.selectedProduct, x, y)
       this.clickedPoint.value = data.value
     },
     getTileLayerURL(){
-      console.log(this.selectedProduct)
       return computeTileLayerURL(this.selectedProduct)
     }
   },

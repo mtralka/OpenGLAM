@@ -12,11 +12,26 @@ const props = defineProps<{
 }>()
 </script>
 <template>
-  <select class="select select-bordered select-primary w-full max-w-xs">
+  <select
+    class="
+      select select-bordered select-primary
+      w-full
+      max-w-xs
+      px-3
+      py-2
+      w-60
+      font-medium
+    "
+  >
     <option v-if="placeholder" disabled="disabled" selected="selected">
       {{ placeholder }}
     </option>
-    <option v-for="item in data" :key="item[keyBy]" :value="item[keyBy]">
+    <option
+      v-for="item in data"
+      :key="item[keyBy]"
+      :value="item[keyBy]"
+      class="bg-gray-200"
+    >
       {{ item[labelBy] }}
     </option>
   </select>

@@ -2,15 +2,9 @@
 /**
  *  Describes user selected Product 
  */
-<<<<<<< Updated upstream
-type selectedProductType {
-    product_id: string,
-    cropmask_id: string,
-=======
 type selectedProductType = {
     productID: string,
     cropmaskID: string,
->>>>>>> Stashed changes
     anomaly: AnomolyEnum,
     anomly_type: AnomolyTypeEnum,
     date: Date,
@@ -37,7 +31,7 @@ type viewStateType = {
   }
 
 
-  export type clickedPointType {
+  export type clickedPointType = {
     show: Boolean,
     value: number,
     x: number,
