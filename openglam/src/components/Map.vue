@@ -24,7 +24,7 @@ function handleClick(info, event) {
 }
 </script>
 <template>
-  <div class="w-screen h-screen overflow-hidden">
+  <div class="w-screen overflow-hidden">
     <div class="absolute z-50 top-10 left-10">
       <p
         class="text-3xl font-bold text-center text-white"
@@ -33,11 +33,13 @@ function handleClick(info, event) {
         OpenGLAM
       </p>
     </div>
-    <DeckGL @click="handleClick"
+    <div class="flex flex-col h-screen overflow-y-hidden h-screen">
+    <DeckGL @click="handleClick" class="overflow-hidden h-[70vh] md:h-screen flex-shrink"
       ><Mapbox :accessToken="accessToken" :mapStyle="MAP_STYLES.DARK"></Mapbox>
       <TileLayer :data="productStore.getTileLayerURL()"> </TileLayer>
     </DeckGL>
-    <ControlPanel class="right-0 bottom-10 absolute md:right-10"></ControlPanel>
+    <ControlPanel class="right-0 bottom-10 md:absolute md:right-10"></ControlPanel>
+  </div>
     <Popup></Popup>
   </div>
 </template>

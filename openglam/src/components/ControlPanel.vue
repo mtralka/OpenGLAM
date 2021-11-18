@@ -50,10 +50,10 @@ const dateFormat = (date) => {
 </script>
 
 <template>
-  <div class="max-w-lg bg-white rounded-sm shadow-dark-500 w-96">
-    <div class="flex flex-col w-full h-full p-10 space-y-4">
+  <div class="max-w-lg bg-white rounded-sm shadow-dark-500 md:w-96 w-full h-auto" >
+    <div class="flex flex-col w-full h-full p-3 md:p-7 md:space-y-3 space-y-2">
       <div class="flex flex-col justify-end space-y-2 items-center">
-        <p class="text-2xl font-semibold">Product</p>
+        <p class="text-xl md:text-2xl font-semibold">Product</p>
         <SelectMenu
           placeholder="Select Product"
           :data="availableDataStore.getProducts"
@@ -63,18 +63,19 @@ const dateFormat = (date) => {
         ></SelectMenu>
       </div>
       <div class="flex flex-col justify-end space-y-2 items-center">
-        <p class="text-2xl font-semibold">Date</p>
+        <p class="text-xl md:text-2xl font-semibold">Date</p>
         <Datepicker
           v-model="selectedDate"
           :enableTimePicker="false"
           :allowedDates="productStore.getProductDates"
+          :altPosition="false"
           @update:modelValue="handleDateSelection"
         >
           <!-- productStore.getProductDates  :format="dateFormat"  handleDateSelection-->
         </Datepicker>
       </div>
       <div class="flex flex-col justify-end space-y-2 items-center">
-        <p class="text-2xl font-semibold">Cropmask</p>
+        <p class="text-xl md:text-2xl font-semibold">Cropmask</p>
         <SelectMenu
           v-model="selectedDate"
           :data="availableDataStore.getCropmasks"

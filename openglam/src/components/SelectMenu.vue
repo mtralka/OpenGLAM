@@ -18,9 +18,12 @@ const props = defineProps<{
       w-full
       max-w-xs
       px-3
-      py-2
+      py-1
+      md:py-2
       w-60
       font-medium
+      md:text-base
+      text-sm
     "
   >
     <option v-if="placeholder" disabled="disabled" selected="selected">
